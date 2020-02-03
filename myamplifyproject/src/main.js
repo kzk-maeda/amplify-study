@@ -8,7 +8,15 @@ import awsconfig from './aws-exports';
 import Amplify, * as AmplifyModules from 'aws-amplify';
 import { AmplifyPlugin } from 'aws-amplify-vue';
 
-Amplify.configure(awsconfig);
+Amplify.configure(
+  awsconfig,
+  );
+Amplify.configure({
+  Auth: {
+    // OPTIONAL - customized storage object
+    storage: window.sessionStorage,
+  }
+});
 Vue.use(AmplifyPlugin, AmplifyModules);
 
 Vue.config.productionTip = false;
